@@ -5,7 +5,7 @@
         <tr>
             <th>Kode</th>
             <th>Nama</th>
-            <th>Jenis</th>
+            <th>kategori</th>
             <th>Harga Beli</th>
             <th>Harga Jual</th>
             <th>Supplier</th>

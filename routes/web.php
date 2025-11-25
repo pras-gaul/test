@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MasterItemsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +20,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::resource('categories', CategoryController::class);
+Route::resource('master-item', MasterItemsController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/master-items', [App\Http\Controllers\MasterItemsController::class, 'index']);
+Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'show']);
 Route::get('/master-items/search', [App\Http\Controllers\MasterItemsController::class, 'search']);
 Route::get('/master-items/form/{method}/{id?}', [App\Http\Controllers\MasterItemsController::class, 'formView']);
 Route::post('/master-items/form/{method}/{id?}', [App\Http\Controllers\MasterItemsController::class, 'formSubmit']);

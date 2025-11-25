@@ -1,4 +1,4 @@
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     @csrf
     @if($method == 'edit')
     <div class="form-group">
@@ -35,7 +35,24 @@
         </select>
     </div>
 
-    @php $selected = $item->jenis ?? ''; @endphp
+    <div class="form-group">
+    <label for="categories">Kategori Items</label>
+    <select name="categories[]" id="categories" class="form-control" multiple required>
+        
+        @foreach($allCategories as $category)
+            <option value="{{ $category->id }}"
+                
+                @if(isset($data_item) && $data_item->categories->contains($category->id))
+                    selected 
+                @endif
+            >
+                {{ $category->name }} ({{ $category->code }})
+            </option>
+        @endforeach
+    </select>
+    </div>
+
+    <!-- @php $selected = $item->jenis ?? ''; @endphp
     <div class="form-group">
         <label>Jenis</label>
         <select class="form-control" required name="jenis">
@@ -46,6 +63,11 @@
             <optio @if($selected == 'Umum') selected @endif>Umum</option>
             <optio @if($selected == 'ATK') selected @endif>ATK</option>
         </select>
+    </div> -->
+
+    <div class="form-group">
+        <label>Foto</label>
+        <input type="file" class="form-control" name="foto" required  value="{{$item->foto ?? ''}}">
     </div>
 
     <button class="btn btn-primary mt-3">Submit</button>

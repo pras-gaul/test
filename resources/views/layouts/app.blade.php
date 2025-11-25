@@ -32,7 +32,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <a href="{{url('master-items')}}">Master Items</a>
+                    </ul>
 
+                    <ul class="navbar-nav me-auto">
+                        <a href="{{ route('categories') }}">Master kategori</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
